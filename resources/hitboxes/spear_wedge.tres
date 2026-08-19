@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WedgeHitboxShape" format=3 uid="uid://c6chlkqtwiy08"]
+
+[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/wedge_hitbox_shape.gd" id="1_3d1ot"]
+
+[resource]
+script = ExtResource("1_3d1ot")
+angle_deg = 5.0
+radius = 3.5
+apex_offset = 5.0
+segments = 2
+metadata/_custom_type_script = "uid://i8lhwmaht7pb"

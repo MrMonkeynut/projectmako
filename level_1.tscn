@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://c6j4k0fs342po"]
+
+[ext_resource type="Script" uid="uid://dha0dca3jfevs" path="res://scripts/weapon.gd" id="2_5rr72"]
+[ext_resource type="PackedScene" uid="uid://0jiwr47dory8" path="res://player.tscn" id="2_hbghi"]
+[ext_resource type="PackedScene" uid="uid://bmyi1ctdjw4tf" path="res://Chamber-Pod.tscn" id="2_hn12h"]
+[ext_resource type="Resource" uid="uid://ccvukgxxp7fo8" path="res://resources/weapons/weapon_sword.tres" id="2_j7kpp"]
+[ext_resource type="Resource" uid="uid://1nkb1ixplj7h" path="res://resources/weapons/weapon_spear.tres" id="3_gyffv"]
+[ext_resource type="PackedScene" uid="uid://cljxxge2k5fkv" path="res://chamber_pod_open.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://bkj6su0mvktxk" path="res://scenes/enemies/aa_1_1.tscn" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://j18ak34gchks" path="res://resources/enemy_spawner.tscn" id="5_5hph3"]
+[ext_resource type="Script" uid="uid://5iiyvax7kaxa" path="res://scripts/spawn_entry.gd" id="6_j7kpp"]
+
+[sub_resource type="Resource" id="Resource_ju7bi"]
+script = ExtResource("6_j7kpp")
+enemy_scene = ExtResource("4_ihfcg")
+spawn_interval = 3.0
+metadata/_custom_type_script = "uid://5iiyvax7kaxa"
+
+[node name="Level1" type="Node3D" unique_id=520608063]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1383939514]
+transform = Transform3D(-0.6060245, 0.28433567, 0.7428913, 0.79422534, 0.26801196, 0.5453215, -0.044049412, 0.9205015, -0.3882484, 6.597182, 7.8145323, -1.5937696)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1548823109 node_paths=PackedStringArray("weapon_name_label") instance=ExtResource("2_hbghi")]
+transform = Transform3D(1.0000001, 2.9802322e-08, 5.9604645e-08, 2.9802322e-08, 1, 1.4901161e-08, -2.9802322e-08, 1.4901158e-08, 1, -2.2594125e-15, -0.40428424, 0)
+weapon_name_label = NodePath("../CanvasLayer/WeaponName")
+available_weapons = Array[ExtResource("2_5rr72")]([ExtResource("3_gyffv"), ExtResource("2_j7kpp")])
+equipped_weapon = ExtResource("2_j7kpp")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1005794518]
+use_collision = true
+radius = 12.0
+height = 3.0
+sides = 24
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=1889025326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014904737, 0.9967046, -0.018201828)
+operation = 2
+radius = 11.5
+height = 3.0
+sides = 24
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=493931037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014904737, 0.9967046, -0.018201828)
+operation = 2
+radius = 11.5
+height = 3.0
+sides = 24
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D" unique_id=2103200865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002505064, -19.113377)
+size = Vector3(5, 3, 15.397722)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D" unique_id=721799579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0025051, -18.91424)
+operation = 2
+size = Vector3(4, 3, 15.836)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=913026864]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -38.466934)
+use_collision = true
+radius = 12.0
+height = 3.0
+sides = 24
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCylinder3D4" unique_id=1725446699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014904737, 0.9967046, -0.018201828)
+operation = 2
+radius = 11.5
+height = 3.0
+sides = 24
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCylinder3D4" unique_id=512844477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014904737, 0.9967046, -0.018201828)
+operation = 2
+radius = 11.5
+height = 3.0
+sides = 24
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D/CSGCylinder3D4" unique_id=571430645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002505064, -19.113377)
+size = Vector3(5, 3, 15.397722)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D/CSGCylinder3D4" unique_id=1673129224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0025051, -18.91424)
+operation = 2
+size = Vector3(4, 3, 15.836)
+
+[node name="Pods" type="Node3D" parent="." unique_id=1359615724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04223299, 0, 0.019916654)
+
+[node name="ChamberPod2" parent="Pods" unique_id=1074428328 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.43797642, -1.63455, 0.61353254, 1.7386664, 0.4658743, 0, -0.15879393, 0.5926269, 1.6922107, -8.440864, 4.7683716e-07, 2.86578)
+
+[node name="ChamberPod3" parent="Pods" unique_id=1195335616 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.38078597, -1.4211122, 1.0370345, 1.7386664, 0.4658743, 0, -0.26840433, 1.0016985, 1.4712436, -7.146587, 0, 5.3652945)
+
+[node name="ChamberPod4" parent="Pods" unique_id=342062737 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.2702756, -1.0086823, 1.4661211, 1.7386663, 0.46587425, 2.082228e-08, -0.3794601, 1.4161642, 1.0442648, -5.333391, -4.7683716e-07, 7.6461215)
+
+[node name="ChamberPod5" parent="Pods" unique_id=1099519872 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.15311125, -0.5714189, 1.7000108, 1.7386664, 0.4658743, 2.554449e-08, -0.43999523, 1.6420841, 0.5915763, -2.6070209, 4.7683716e-07, 8.943816)
+
+[node name="ChamberPod6" parent="Pods" unique_id=1873921297 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.009473402, 0.035355214, 1.7996278, 1.7386664, 0.4658743, 0, -0.465778, 1.7383069, -0.03660241, 0.35141534, 4.7683716e-07, 8.932733)
+
+[node name="ChamberPod7" parent="Pods" unique_id=741568648 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.16766721, 0.62574244, 1.6793848, 1.7386664, 0.4658743, 0, -0.43465683, 1.6221611, -0.64781624, 3.130059, 4.7683716e-07, 8.414316)
+
+[node name="ChamberPod8" parent="Pods" unique_id=2055300605 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.276092, 1.0303893, 1.4498516, 1.7386664, 0.4658743, 0, -0.37524933, 1.4004492, -1.0667373, 5.602737, 0, 7.06948)
+
+[node name="ChamberPod9" parent="Pods" unique_id=476425146 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.3848776, 1.4363827, 1.0142359, 1.7386663, 0.46587425, 2.082228e-08, -0.2625035, 0.9796764, -1.4870527, 7.8462224, -4.7683716e-07, 5.2102795)
+
+[node name="ChamberPod10" parent="Pods" unique_id=1142724906 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.44301772, 1.6533642, 0.5568848, 1.7386664, 0.4658743, 2.554449e-08, -0.14413242, 0.5379095, -1.7116888, 9.088209, 4.7683716e-07, 2.4580846)
+
+[node name="ChamberPod11" parent="Pods" unique_id=2133727616 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.46585432, 1.7385918, -0.016691396, 1.7386664, 0.4658743, 0, 0.0043200515, -0.01612265, -1.7999227, 9.310354, 4.7683716e-07, -0.22342058)
+
+[node name="ChamberPod12" parent="Pods" unique_id=433666197 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.4364851, 1.6289845, -0.6291981, 1.7386664, 0.4658743, 0, 0.16284847, -0.60775864, -1.6864488, 8.82271, 4.7683716e-07, -3.0076294)
+
+[node name="ChamberPod13" parent="Pods" unique_id=984798746 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.37828073, 1.4117624, -1.0506328, 1.7386664, 0.4658743, 0, 0.27192384, -1.0148335, -1.4615641, 7.5053105, 0, -5.495034)
+
+[node name="ChamberPod14" parent="Pods" unique_id=1232258248 instance=ExtResource("2_hn12h")]
+transform = Transform3D(-0.26674527, 0.9955069, -1.4757416, 1.7386663, 0.46587425, 2.082228e-08, 0.38195008, -1.4254569, -1.0306246, 5.671043, -4.7683716e-07, -7.75895)
+
+[node name="ChamberPod15" parent="Pods" unique_id=1515841436 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.26787576, -0.99972576, -1.4726812, 1.7386664, 0.4658743, 0, 0.38115805, -1.4225007, 1.0349922, -5.104689, -9.536743e-07, -7.553921)
+
+[node name="ChamberPod16" parent="Pods" unique_id=249391889 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.37908477, -1.4147633, -1.046298, 1.7386663, 0.46587425, 2.082228e-08, 0.27080184, -1.0106462, 1.4646709, -7.38803, -1.4305115e-06, -5.7438912)
+
+[node name="ChamberPod17" parent="Pods" unique_id=561795323 instance=ExtResource("2_hn12h")]
+transform = Transform3D(0.4397824, -1.6412898, -0.5939345, 1.7386664, 0.4658743, 2.554449e-08, 0.1537216, -0.5736967, 1.6991885, -8.689507, -4.7683716e-07, -3.0193238)
+
+[node name="ChamberPodOpen" parent="Pods/ChamberPod17" unique_id=1936241332 instance=ExtResource("3_hn12h")]
+transform = Transform3D(0.99624825, 0.014001533, 0.08540087, 0.0140016405, 0.9477454, -0.31872037, -0.085400894, 0.3187204, 0.9439937, 0.12072253, -0.45054197, 1.6021618)
+
+[node name="Aa-1-1" parent="." unique_id=906558703 instance=ExtResource("4_ihfcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5391645, -0.039916992, -8.198074)
+
+[node name="EnemySpawner" parent="." unique_id=319918499 instance=ExtResource("5_5hph3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2318726, 1.9073486e-06, -39.31481)
+enabled = true
+entries = Array[ExtResource("6_j7kpp")]([SubResource("Resource_ju7bi")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=231641175]
+
+[node name="WeaponName" type="Label" parent="CanvasLayer" unique_id=72158260]
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.003
+anchor_right = 0.008
+anchor_bottom = 0.009000001
+offset_left = -2.3040001
+offset_top = -1.944
+offset_right = 30.784
+offset_bottom = 17.168

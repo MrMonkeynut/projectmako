@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://0jiwr47dory8"]
+
+[ext_resource type="Script" uid="uid://c4scipd7mwho5" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Resource" uid="uid://ccvukgxxp7fo8" path="res://resources/weapons/weapon_sword.tres" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://d2ay8djhmuxct" path="res://scripts/hitbox_controller.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/wedge_hitbox_shape.gd" id="3_i3pqv"]
+
+[sub_resource type="Resource" id="Resource_onrkg"]
+script = ExtResource("3_i3pqv")
+angle_deg = 60.0
+radius = 1.8
+metadata/_custom_type_script = "uid://i8lhwmaht7pb"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
+radius = 0.04
+height = 0.13
+
+[sub_resource type="PrismMesh" id="PrismMesh_1vivr"]
+size = Vector3(4.7, 4, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+transparency = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vivr"]
+height = 1.8950195
+
+[node name="Player" type="CharacterBody3D" unique_id=1548823109 groups=["player"]]
+script = ExtResource("1_3vyb7")
+equipped_weapon = ExtResource("2_hqtel")
+
+[node name="CharacterModel" type="Node3D" parent="." unique_id=787627189]
+
+[node name="Hitbox" type="Node3D" parent="CharacterModel" unique_id=598493902]
+script = ExtResource("2_i3pqv")
+shape_def = SubResource("Resource_onrkg")
+enemy_mask = 16
+show_debug = null
+
+[node name="Body" type="MeshInstance3D" parent="CharacterModel" unique_id=778292685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959455, 0)
+mesh = SubResource("CapsuleMesh_onrkg")
+
+[node name="EyeRight" type="MeshInstance3D" parent="CharacterModel" unique_id=1163764296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10030517, 1.3178298, -0.4861174)
+mesh = SubResource("CapsuleMesh_1vivr")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="CharacterModel" unique_id=1286883997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14542425, 1.3178298, -0.4861174)
+mesh = SubResource("CapsuleMesh_1vivr")
+
+[node name="ViewCone" type="MeshInstance3D" parent="CharacterModel" unique_id=1042571406]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.2632371, -2.09825)
+visible = false
+mesh = SubResource("PrismMesh_1vivr")
+surface_material_override/0 = SubResource("StandardMaterial3D_onrkg")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=1885680879]
+top_level = true
+
+[node name="CameraTarget" type="Node3D" parent="CameraController" unique_id=1253397593]
+transform = Transform3D(1, 0, 0, 0, 0.5192834, 0.85460204, 0, -0.85460204, 0.5192834, 0, 13.774491, 7.792508)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/CameraTarget" unique_id=494022546]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.08952046, -5.5172076)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=325523461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9553046, 0)
+shape = SubResource("CapsuleShape3D_1vivr")
+
+[node name="Head" type="Marker3D" parent="." unique_id=296127990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0904303, 0)

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bkj6su0mvktxk"]
+
+[ext_resource type="Script" uid="uid://bkmhpbyo4ogh1" path="res://scripts/enemies/aa_1_1.gd" id="1_2eawo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
+radius = 0.33691406
+height = 0.9267578
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1vivr"]
+height = 0.78845215
+radius = 0.30810547
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3ttgx"]
+height = 0.8417969
+radius = 0.3647461
+
+[node name="Aa-1-1" type="CharacterBody3D" unique_id=83394250]
+script = ExtResource("1_2eawo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=795167383]
+mesh = SubResource("CapsuleMesh_1vivr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1161312066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028747559, 0)
+shape = SubResource("CylinderShape3D_1vivr")
+
+[node name="VisionRay" type="RayCast3D" parent="." unique_id=1409630966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25421798, 0)
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=791980945]
+collision_layer = 16
+collision_mask = 0
+
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox" unique_id=120672554]
+shape = SubResource("CylinderShape3D_3ttgx")

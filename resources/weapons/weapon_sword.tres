@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ccvukgxxp7fo8"]
+
+[ext_resource type="Script" uid="uid://dha0dca3jfevs" path="res://scripts/weapon.gd" id="1_uua4w"]
+[ext_resource type="Texture2D" uid="uid://dvqwe6byej6kb" path="res://icon.svg" id="1_y7rbm"]
+[ext_resource type="Resource" uid="uid://bqo0ysab5003n" path="res://resources/hitboxes/sword_wedge.tres" id="3_y7rbm"]
+
+[resource]
+script = ExtResource("1_uua4w")
+weapon_name = "Sword"
+icon = ExtResource("1_y7rbm")
+shape_def = ExtResource("3_y7rbm")
+attack_cooldown = 0.2
+windup_move_speed_mod = 0.35
+metadata/_custom_type_script = "uid://dha0dca3jfevs"
