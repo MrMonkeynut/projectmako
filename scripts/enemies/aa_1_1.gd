@@ -3,8 +3,21 @@ extends Enemy
 
 @export var speed: float = 3
 @export var detection_range: float = 20.0
+@export var engage_range: float = 2.5
+@export var jump_angle_deg: float = 45.0
+@export var jump_magnitude: float = 12.0
+@export var jump_damage: float = 1.0
 
 @onready var vision_ray: RayCast3D = $VisionRay
+
+func _ready() -> void:
+	super._ready()
+	attack_steps = [
+		FollowStep.new(engage_range, speed),
+		StopMovingStep.new(0.4, true),
+		JumpAttackStep.new(jump_angle_deg, jump_magnitude, DamageInstance.new(jump_damage, DamageType.Type.BLUNT)),
+		StopMovingStep.new(0.4, true),
+	]
 
 func _process_unaware(_delta: float) -> void:
 	if not player:
