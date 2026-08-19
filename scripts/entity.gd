@@ -21,6 +21,7 @@ var health: float
 var hurtbox: HurtboxController
 var hitbox: HitboxController
 var _health_label: Label3D
+var _damage_override: DamageInstance = null
 
 
 func _ready() -> void:
@@ -47,6 +48,10 @@ func _handle_hitbox() -> void:
 func _handle_labels() -> void:
 	if show_health_label:
 		_setup_health_label()
+
+
+func is_alive() -> bool:
+	return health > 0 and not is_queued_for_deletion()
 
 
 func take_damage(amount: float) -> void:
@@ -94,7 +99,23 @@ func _perform_attack() -> void:
 	hitbox.set_debug_state(HitboxController.DebugState.IDLE)
 
 
+## Lets a caller (e.g. an AttackSequenceStep) supply damage that
+## overrides equipped_weapon for the next hit(s) this hitbox lands.
+func set_damage_override(instance: DamageInstance) -> void:
+	_damage_override = instance
+
+
+func clear_damage_override() -> void:
+	_damage_override = null
+
+
 func _on_attack_landed(target: Node) -> void:
+	if _damage_override:
+		if target.has_method("receive_damage"):
+			var instance := _damage_override
+			instance.source = self
+			target.receive_damage(instance)
+		return
 	if equipped_weapon:
 		deal_damage(target, equipped_weapon.damage_amount, equipped_weapon.damage_type)
 
