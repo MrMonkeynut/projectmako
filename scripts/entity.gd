@@ -1,12 +1,14 @@
 class_name Entity
 extends CharacterBody3D
 signal weapon_equipped(weapon: Weapon)
-@export var max_health: float = 4.0
+@export var max_health: float = 3.0
 @export var hurtbox_shape: Shape3D
 @export var hurtbox_offset: Vector3 = Vector3(0, 0.9, 0)
 @export_flags_3d_physics var hurtbox_layer: int = 0
 @export var show_health_label: bool = true
 @export var health_label_offset: Vector3 = Vector3(0, 1.0, 0)
+@export var flash_color: Color = Color(1, 0, 0)
+@export var flash_duration: float = 0.15
 @export var equipped_weapon: Weapon:
 	set(value):
 		equipped_weapon = value
@@ -21,7 +23,9 @@ var health: float
 var hurtbox: HurtboxController
 var hitbox: HitboxController
 var _health_label: Label3D
-var _damage_override: DamageInstance = null
+var _flash_material: StandardMaterial3D
+var _flash_meshes: Array[MeshInstance3D] = []
+var _flash_time_left: float = 0.0
 
 
 func _ready() -> void:
@@ -29,8 +33,17 @@ func _ready() -> void:
 	_handle_hurtbox()
 	_handle_hitbox()
 	_handle_labels()
+	_handle_flash()
 	if hitbox and equipped_weapon:
 		hitbox.configure_from_weapon(equipped_weapon)
+
+
+func _process(delta: float) -> void:
+	if _flash_time_left <= 0.0:
+		return
+	_flash_time_left -= delta
+	if _flash_time_left <= 0.0:
+		_set_flashing(false)
 
 
 func _handle_hurtbox() -> void:
@@ -50,13 +63,10 @@ func _handle_labels() -> void:
 		_setup_health_label()
 
 
-func is_alive() -> bool:
-	return health > 0 and not is_queued_for_deletion()
-
-
 func take_damage(amount: float) -> void:
 	health -= amount
 	_update_health_label()
+	_flash_red()
 	if health <= 0:
 		die()
 
@@ -99,24 +109,14 @@ func _perform_attack() -> void:
 	hitbox.set_debug_state(HitboxController.DebugState.IDLE)
 
 
-## Lets a caller (e.g. an AttackSequenceStep) supply damage that
-## overrides equipped_weapon for the next hit(s) this hitbox lands.
-func set_damage_override(instance: DamageInstance) -> void:
-	_damage_override = instance
-
-
-func clear_damage_override() -> void:
-	_damage_override = null
-
-
 func _on_attack_landed(target: Node) -> void:
-	if _damage_override:
-		if target.has_method("receive_damage"):
-			var instance := _damage_override
-			instance.source = self
-			target.receive_damage(instance)
-		return
-	if equipped_weapon:
+	if hitbox.damage_override:
+		if not target.has_method("receive_damage"):
+			return
+		var instance := hitbox.damage_override
+		instance.source = self
+		target.receive_damage(instance)
+	elif equipped_weapon:
 		deal_damage(target, equipped_weapon.damage_amount, equipped_weapon.damage_type)
 
 
@@ -142,3 +142,31 @@ func _setup_health_label() -> void:
 func _update_health_label() -> void:
 	if _health_label:
 		_health_label.text = str(int(health))
+
+
+func _handle_flash() -> void:
+	_flash_material = StandardMaterial3D.new()
+	_flash_material.albedo_color = flash_color
+	_flash_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_collect_flash_meshes(self)
+
+
+## Collects MeshInstance3D nodes for the flash, skipping HitboxController
+## subtrees so debug hitbox meshes don't get tinted along with the model.
+func _collect_flash_meshes(node: Node) -> void:
+	for child in node.get_children():
+		if child is HitboxController:
+			continue
+		if child is MeshInstance3D:
+			_flash_meshes.append(child)
+		_collect_flash_meshes(child)
+
+
+func _flash_red() -> void:
+	_flash_time_left = flash_duration
+	_set_flashing(true)
+
+
+func _set_flashing(enabled: bool) -> void:
+	for mesh in _flash_meshes:
+		mesh.material_overlay = _flash_material if enabled else null

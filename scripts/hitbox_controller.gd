@@ -16,6 +16,11 @@ enum DebugState { IDLE, WINDUP, ACTIVE, COOLDOWN }
 @export var warmup_debug_color_alpha = 0.0
 @export var active_debug_color_alpha = 0.35
 var active: bool = false
+var damage_override: DamageInstance = null
+var hit_trigger: Callable = HitTriggers.instant()
+
+var _elapsed_since_open: float = 0.0
+var _tracked_targets: Dictionary = {}
 
 var debug_state: DebugState = DebugState.IDLE:
 	set(value):
@@ -61,13 +66,14 @@ func set_debug_state(state: DebugState) -> void:
 	debug_state = state
 
 
-## Opens the hitbox and performs a SINGLE overlap check right now — only
-## targets already in range at this exact moment can be hit.
-func open() -> void:
+func open(damage_instance: DamageInstance = null) -> void:
+	damage_override = damage_instance
 	reset_hits()
 	active = true
 	debug_state = DebugState.ACTIVE
-	_check_initial_hits()
+	_elapsed_since_open = 0.0
+	_tracked_targets.clear()
+	_poll_hits(0.0)
 
 
 func close() -> void:
@@ -79,14 +85,39 @@ func reset_hits() -> void:
 	_already_hit.clear()
 
 
-func _check_initial_hits() -> void:
+func _physics_process(delta: float) -> void:
+	if not active:
+		return
+	_elapsed_since_open += delta
+	_poll_hits(delta)
+
+
+## Queries current overlaps and runs every still-unhit candidate through
+## hit_trigger, which decides whether THIS is the frame it counts as a hit.
+## Candidates include targets that overlapped last frame but not this one,
+## so triggers like HitTriggers.sustained() see the "left the hitbox" tick
+## and can reset their own state.
+func _poll_hits(delta: float) -> void:
 	_query.transform = global_transform
 	var results := get_world_3d().direct_space_state.intersect_shape(_query, 16)
+
+	var overlapping_now: Dictionary = {}
 	for hit in results:
-		var target: Node = hit.collider
-		if target not in _already_hit:
+		overlapping_now[hit.collider] = true
+
+	var candidates: Dictionary = overlapping_now.duplicate()
+	for target in _tracked_targets:
+		candidates[target] = true
+
+	for target in candidates:
+		if target in _already_hit:
+			continue
+		var is_overlapping: bool = overlapping_now.has(target)
+		if hit_trigger.call(target, is_overlapping, delta, _elapsed_since_open):
 			_already_hit.append(target)
 			_on_hit(target)
+
+	_tracked_targets = overlapping_now
 
 
 func _on_hit(target: Node) -> void:
