@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://5iiyvax7kaxa"
 [node name="Level1" type="Node3D" unique_id=520608063]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1383939514]
-transform = Transform3D(-0.6060245, 0.28433567, 0.7428913, 0.79422534, 0.26801196, 0.5453215, -0.044049412, 0.9205015, -0.3882484, 6.597182, 7.8145323, -1.5937696)
+transform = Transform3D(-0.9883895, 0.016412662, 0.15105236, 0.15158269, 0.17478551, 0.9728685, -0.010434404, 0.9844698, -0.17524408, 1.076304, 9.517532, -7.900498)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1548823109 node_paths=PackedStringArray("weapon_name_label") instance=ExtResource("2_hbghi")]
