@@ -4,6 +4,10 @@ extends AttackSequenceStep
 @export var duration: float = 0.4
 @export var aim_at_player: bool = true
 
+func _init(p_duration: float = 0.4, p_aim_at_player: bool = true) -> void:
+	duration = p_duration
+	aim_at_player = p_aim_at_player
+
 func execute(enemy: Enemy) -> void:
 	enemy.set_movement_locked(true)
 	var t := 0.0

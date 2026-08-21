@@ -64,6 +64,7 @@ jump={
 [layer_names]
 
 3d_physics/layer_5="enemy_hurtbox"
+3d_physics/layer_6="player_hurtbox"
 
 [physics]
 
