@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WedgeHitboxShape" format=3 uid="uid://bqo0ysab5003n"]
 
-[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/wedge_hitbox_shape.gd" id="1_a8kfm"]
+[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/combat/wedge_hitbox_shape.gd" id="1_a8kfm"]
 
 [resource]
 script = ExtResource("1_a8kfm")

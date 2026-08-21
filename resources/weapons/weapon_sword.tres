@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ccvukgxxp7fo8"]
 
-[ext_resource type="Script" uid="uid://dha0dca3jfevs" path="res://scripts/weapon.gd" id="1_uua4w"]
+[ext_resource type="Script" uid="uid://dha0dca3jfevs" path="res://scripts/combat/weapon.gd" id="1_uua4w"]
 [ext_resource type="Texture2D" uid="uid://dvqwe6byej6kb" path="res://icon.svg" id="1_y7rbm"]
 [ext_resource type="Resource" uid="uid://bqo0ysab5003n" path="res://resources/hitboxes/sword_wedge.tres" id="3_y7rbm"]
 

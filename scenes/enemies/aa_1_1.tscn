@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://bkj6su0mvktxk"]
 
 [ext_resource type="Script" uid="uid://bkmhpbyo4ogh1" path="res://scripts/enemies/a_1_1.gd" id="1_2eawo"]
-[ext_resource type="Script" uid="uid://d2ay8djhmuxct" path="res://scripts/hitbox_controller.gd" id="2_hitbox"]
-[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/wedge_hitbox_shape.gd" id="3_wedge"]
+[ext_resource type="Script" uid="uid://d2ay8djhmuxct" path="res://scripts/combat/hitbox_controller.gd" id="2_hitbox"]
+[ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/combat/wedge_hitbox_shape.gd" id="3_wedge"]
+[ext_resource type="Script" uid="uid://bydm03t37xq4h" path="res://scripts/ui/stat_bar_controller.gd" id="4_healthbar"]
+[ext_resource type="Texture2D" uid="uid://bvhtk2t7j04u5" path="res://assets/sprites/ui/healthbar.png" id="5_healthbar_border"]
+[ext_resource type="Texture2D" uid="uid://dawkfwiktgklx" path="res://assets/sprites/ui/Healthbar-background.png" id="6_healthbar_bg"]
+[ext_resource type="Texture2D" uid="uid://b3lv3oh1cmcqw" path="res://assets/sprites/ui/Healthbar-fill.png" id="7_healthbar_fill"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
 radius = 0.33691406
@@ -48,3 +52,10 @@ collision_mask = 0
 
 [node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox" unique_id=120672554]
 shape = SubResource("CylinderShape3D_3ttgx")
+
+[node name="HealthBar" type="Node3D" parent="." unique_id=1361816343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+script = ExtResource("4_healthbar")
+background_texture = ExtResource("6_healthbar_bg")
+fill_texture = ExtResource("7_healthbar_fill")
+border_texture = ExtResource("5_healthbar_border")

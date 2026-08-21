@@ -1,0 +1,92 @@
+[gd_scene format=4 uid="uid://cljxxge2k5fkv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1vivr"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_1vivr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1vivr"]
+top_radius = 0.043945313
+bottom_radius = 0.043945313
+height = 1.107544
+
+[sub_resource type="BoxMesh" id="BoxMesh_1vivr"]
+size = Vector3(0.69503784, 0.2, 0.08)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k5r4f"]
+_surfaces = [{
+"aabb": AABB(0.36409768, -0.5506592, -0.30259648, 0.13497579, 1.1013184, 0.29555884),
+"attribute_data": PackedByteArray("7dluPwAAAAD4hGQ/AAAAAIE1XT/PzEw97dluPwAAAACBNV0/z8xMPSLEYz/PzEw9q6pqPwAAAAC3P2U/AACAP7c/ZT8AAAAAbddkPwAAAABsdVE/z8xMPQ0EWD/PzEw9q6pqPwAAAACrqmo/AACAP7c/ZT8AAIA/eIJaPwAAAABsdVE/z8xMPW3XZD8AAAAAeIJaPwAAAAAixGM/0cxMPWx1UT/PzEw97dluPwAAAAAixGM/z8xMPXSjez8AAAAAdKN7PwAAAAAixGM/z8xMPU9Gbz/RzEw9q6pqPwAAAABVVXU/AAAAAFVVdT8AAIA/R8N/PwAAAABPRm8/0cxMPXr2cj/QzEw9dKN7PwAAAABPRm8/0cxMPUfDfz8AAAAAVVV1PwAAAABUeFU9AAAAAFVVdT8AAIA/q6pqPwAAAABVVXU/AACAP6uqaj8AAIA/dKN7PwAAAADt2W4/AAAAACLEYz/RzEw97dluPwAAAAAHg28/0MxMPSLEYz/RzEw9VVV1PwAAgD9UeFU9AAAAAFR4VT0AAIA/AACAPwAAAAAt4Hs/AAAAAAeDbz/QzEw9othmPwAQZj6rqmo/AHxGP6uqaj8AEGY+q6pqPwAQZj5VVXU/AHxGP1VVdT8AEGY+othmPwAQZj6i2GY/AHxGP6uqaj8AfEY/VVV1PwB8Rj+rqmo/ABBmPquqaj8AfEY/XjBtPQAQZj5VVXU/ABBmPl4wbT0AfEY/XjBtPQB8Rj9VVXU/ABBmPlVVdT8AfEY/EFayPQlNiz4QVrI9F6kpP4q8MD0JTYs+EFayPRepKT+KvDA9F6kpP4q8MD0JTYs+e1k6P0DaQD/Sraw+QNpAP3tZOj+3YDM/0q2sPkDaQD/Sraw+t2AzP3tZOj+3YDM/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("2rPdPgD4DL/4/3++8QnJPgD4DL/t7Zq+A2u6PgD4DL9xSoS+2rPdPgD4DL/4/3++A2u6PgD4DL9xSoS+RIjHPgD4DL9fZma+2rPdPgD4DL/4/3++8QnJPgD4DD/t7Zq+8QnJPgD4DL/t7Zq+8QnJPgD4DD/t7Zq+RIjHPgD4DD9fZma+A2u6PgD4DD9xSoS+2rPdPgD4DL/4/3++2rPdPgD4DD/4/3++8QnJPgD4DD/t7Zq+2rPdPgD4DD/4/3++RIjHPgD4DD9fZma+8QnJPgD4DD/t7Zq+2rPdPgD4DD/4/3++nozePgD4DD8hh+69RIjHPgD4DD9fZma+2rPdPgD4DL/4/3++RIjHPgD4DL9fZma+6Ub3PgD4DL/2gwS+6Ub3PgD4DL/2gwS+RIjHPgD4DL9fZma+nozePgD4DL8hh+692rPdPgD4DL/4/3++6Ub3PgD4DL/2gwS+6Ub3PgD4DD/2gwS+j4b/PgD4DL8AnOa7nozePgD4DL8hh+699ezlPgD4DL8AnOa76Ub3PgD4DL/2gwS+nozePgD4DL8hh+69j4b/PgD4DL8AnOa76Ub3PgD4DL/2gwS+j4b/PgD4DL8AnOa76Ub3PgD4DD/2gwS+2rPdPgD4DL/4/3++6Ub3PgD4DD/2gwS+2rPdPgD4DD/4/3++2rPdPgD4DD/4/3++6Ub3PgD4DD/2gwS+nozePgD4DD8hh+696Ub3PgD4DD/2gwS+9ezlPgD4DD8AnOa7nozePgD4DD8hh+696Ub3PgD4DD/2gwS+j4b/PgD4DL8AnOa7j4b/PgD4DD8AnOa76Ub3PgD4DD/2gwS+j4b/PgD4DD8AnOa79ezlPgD4DD8AnOa7A2u6PgD4DL9xSoS+RIjHPgD4DD9fZma+RIjHPgD4DL9fZma+RIjHPgD4DL9fZma+nozePgD4DD8hh+69nozePgD4DL8hh+69A2u6PgD4DL9xSoS+A2u6PgD4DD9xSoS+RIjHPgD4DD9fZma+nozePgD4DD8hh+69RIjHPgD4DL9fZma+RIjHPgD4DD9fZma+9ezlPgD4DL8AnOa7nozePgD4DL8hh+699ezlPgD4DD8AnOa79ezlPgD4DD8AnOa7nozePgD4DL8hh+69nozePgD4DD8hh+699ezlPgD4DL8AnOa79ezlPgD4DD8AnOa7j4b/PgD4DL8AnOa79ezlPgD4DD8AnOa7j4b/PgD4DD8AnOa7j4b/PgD4DL8AnOa78QnJPgD4DL/t7Zq+8QnJPgD4DD/t7Zq+A2u6PgD4DL9xSoS+8QnJPgD4DD/t7Zq+A2u6PgD4DD9xSoS+A2u6PgD4DL9xSoS+/38AANmu/z//fwAAkrf/P/9/AACSt/8//38AANmu/z//fwAAkrf/P/9/AADZrv8////Zrtmu/7///5K3krf/v///kreSt/+//3///wAAyRv/f///AADJG/9///8AAMkb///Zrtmu/7///9mu2a7/v///kreSt/+//3///wAAyRv/f///AADJG/9///8AAMkb/3///3yl/7//f///fKX/v/9///98pf+//38AANmu/z//fwAA2a7/P/9/AAAMm/8//38AAAyb/z//fwAA2a7/P/9/AAAMm/8////Zrtmu/7///wybDJv/v///DJsMm/+//38AAOOO/z//fwAADJv/P/9/AADjjv8//38AAAyb/z//fwAADJv/P/9/AADjjv8///8MmwAAhg3//+OOAAByB///DJsAAIYN///Zrtmu/7///wybDJv/v///2a7Zrv+//3///wAAvhL/f///AAC+Ev9///8AAL4S/3///+OO/7//f///447/v/9////jjv+///8MmwAAhg3//+OOAAByB///444AAHIH/3///wAAcgf/f///AAByB/9///8AAHIHkjf/f5K3/z/TMf9/0rH/P80r/3/Nq/8/zSv/f82r/z+zHv9/s57/PzUX/380l/8/kjf/f5K3/z+SN/9/krf/P9Mx/3/Ssf8/sx7/f7Oe/z/NK/9/zav/P9Mx/3/Ssf8/5A7/fwAAjPg1F/9/AABk9OQO/38AAIz45A7/fwAAjPg1F/9/AABk9LMe/38AAKXw/3//fwAA/7//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAA5sv9/AIAAADmy/38AgAAAObL/fwCAAAA5sv9/AIAAADmy/38AgAAAObL/fwCA")
+}]
+
+[node name="ChamberPodOpen" type="MeshInstance3D" unique_id=1936241332]
+transform = Transform3D(0.4658743, -1.7386664, 0, 1.7386664, 0.4658743, 0, 0, 0, 1.8, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_1vivr")
+
+[node name="Ring-Top" type="MeshInstance3D" parent="." unique_id=1888811019]
+transform = Transform3D(0.5327737, 1.1175871e-08, 0, 1.4901161e-08, 0.24642259, 0, 0, 0, 0.54025817, -0.011554524, 0.55172455, 0)
+mesh = SubResource("TorusMesh_1vivr")
+
+[node name="Ring-Bottom" type="MeshInstance3D" parent="." unique_id=1469277644]
+transform = Transform3D(0.5327737, 1.1175871e-08, 0, 1.4901161e-08, 0.24642259, 0, 0, 0, 0.54025817, -0.009054914, -0.55248564, 0)
+mesh = SubResource("TorusMesh_1vivr")
+
+[node name="Door-Right" type="MeshInstance3D" parent="." unique_id=2022273412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37638143, -0.017085113, -0.2876672)
+mesh = SubResource("CylinderMesh_1vivr")
+
+[node name="Door-Left" type="MeshInstance3D" parent="." unique_id=98639433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37638143, -0.01708512, 0.299562)
+mesh = SubResource("CylinderMesh_1vivr")
+
+[node name="Leg-Right" type="MeshInstance3D" parent="." unique_id=1687905134]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -0.391935, 0.33426315, -0.44650173)
+mesh = SubResource("BoxMesh_1vivr")
+
+[node name="Leg-Left" type="MeshInstance3D" parent="." unique_id=176427863]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -0.39193517, 0.33426315, 0.44987273)
+mesh = SubResource("BoxMesh_1vivr")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1217788203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1909516e-09, 0.019897496, 0)
+height = 1.1013184
+sides = 24
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCylinder3D" unique_id=2019132077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35695922, -0.020719437, -0.0029599129)
+operation = 2
+size = Vector3(0.49194336, 1.0257568, 0.5563965)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=789595239]
+operation = 2
+radius = 0.45
+sides = 24
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D" unique_id=2113726915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020907346, 0.091890454, 0.49296236)
+operation = 2
+size = Vector3(1.1381836, 2.8190918, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D" unique_id=407305133]
+transform = Transform3D(0.8400385, 0, -0.5425268, 0, 1, 0, 0.5425268, 0, 0.8400385, -0.22284347, 0.09189046, -0.3985369)
+operation = 2
+size = Vector3(1.1381836, 2.8190918, 1)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=816375752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5879354e-09, 0.019897496, 0)
+operation = 2
+radius = 0.47070313
+height = 1.1013184
+sides = 24
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="." unique_id=1765794852]
+transform = Transform3D(-0.5847043, 0, 0.81124663, 0, 1, 0, -0.81124663, 0, -0.5847043, 0.8448291, 0.019897446, -0.1455231)
+mesh = SubResource("ArrayMesh_k5r4f")
+
+[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="." unique_id=940255354]
+transform = Transform3D(-0.5005133, 5.1116466e-08, 0.8657288, 3.5814256e-08, -1, 7.97501e-08, 0.865729, 7.092142e-08, 0.5005132, 0.8119769, 0.01989747, 0.103051074)
+mesh = SubResource("ArrayMesh_k5r4f")
