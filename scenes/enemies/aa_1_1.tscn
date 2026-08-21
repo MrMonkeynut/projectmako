@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkj6su0mvktxk"]
 
-[ext_resource type="Script" uid="uid://bkmhpbyo4ogh1" path="res://scripts/enemies/aa_1_1.gd" id="1_2eawo"]
+[ext_resource type="Script" uid="uid://bkmhpbyo4ogh1" path="res://scripts/enemies/a_1_1.gd" id="1_2eawo"]
 [ext_resource type="Script" uid="uid://d2ay8djhmuxct" path="res://scripts/hitbox_controller.gd" id="2_hitbox"]
 [ext_resource type="Script" uid="uid://i8lhwmaht7pb" path="res://scripts/wedge_hitbox_shape.gd" id="3_wedge"]
 
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://i8lhwmaht7pb"
 height = 0.8417969
 radius = 0.3647461
 
-[node name="Aa-1-1" type="CharacterBody3D" unique_id=83394250]
+[node name="a-1-1" type="CharacterBody3D" unique_id=83394250]
 script = ExtResource("1_2eawo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=795167383]

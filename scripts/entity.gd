@@ -26,6 +26,7 @@ var _health_label: Label3D
 var _flash_material: StandardMaterial3D
 var _flash_meshes: Array[MeshInstance3D] = []
 var _flash_time_left: float = 0.0
+var _persistent_tint_material: Material = null
 
 
 func _ready() -> void:
@@ -61,6 +62,12 @@ func _handle_hitbox() -> void:
 func _handle_labels() -> void:
 	if show_health_label:
 		_setup_health_label()
+
+
+## Zeroes horizontal velocity, leaving vertical (gravity/jump) untouched.
+func stop_moving() -> void:
+	velocity.x = 0
+	velocity.z = 0
 
 
 func take_damage(amount: float) -> void:
@@ -168,5 +175,25 @@ func _flash_red() -> void:
 
 
 func _set_flashing(enabled: bool) -> void:
+	var material := _flash_material if enabled else _persistent_tint_material
 	for mesh in _flash_meshes:
-		mesh.material_overlay = _flash_material if enabled else null
+		mesh.material_overlay = material
+
+
+## A standing, low-alpha tint (e.g. an enemy's alert-state color) that
+## persists until changed — distinct from the momentary damage flash,
+## which temporarily overrides it and restores it when the flash ends.
+func set_persistent_tint(color: Color) -> void:
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = color
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_persistent_tint_material = mat
+	if _flash_time_left <= 0.0:
+		_set_flashing(false)
+
+
+func clear_persistent_tint() -> void:
+	_persistent_tint_material = null
+	if _flash_time_left <= 0.0:
+		_set_flashing(false)
